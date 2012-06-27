@@ -1,0 +1,39 @@
+{% extends "theme.html" %}
+{% block body %}
+<div class='span10'>
+	<form class='form-horizontal span6 offset2'>
+		<fieldset>
+			<legend>Register Account</legend>
+			<div class='control-group'>
+				<label class='control-label' for='username'>Username:</label>
+				<div class='controls'>
+					<input type='text' class='input' id='username'>
+				</div>
+				<label class='control-label' for='password'>Password:</label>
+				<div class='controls'>
+					<input type='password' class='input' id='password'>
+				</div>
+				<label class='control-label' for='password2'>Confirm Password:</label>
+				<div class='controls'>
+					<input type='password' class='input' id='password2'>
+				</div>
+				<label class='control-label' for='email'>Email:</label>
+				<div class='controls'>
+					<input type='text' class='input' id='email'>
+				</div>	
+				<label class='control-label' for='phonenumber'>Password:</label>
+				<div class='controls'>
+					<input type='password' class='input' id='phonenumber'>
+				</div>
+				<div class='controls'>
+					<input type='checkbox'>&nbsp;I have read, understood and agree to the <a href='/tos'>terms of service.</a>
+				</div>
+				<div class='controls'>
+					<button type='submit' class='btn btn-inverse'>Sign up</button>
+				</div>
+			</div>
+		</fieldset>
+	</form>
+</div>
+
+{% end %}

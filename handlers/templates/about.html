@@ -1,0 +1,77 @@
+{% extends "main.html" %}
+
+{% block title %} About BitPostage {% end %}
+
+{% block body %}
+<div class="hero-unit">
+	<h2>About:</h2>
+<p>BitPostage was created to fill a void that has been empty in the Bitcoin community.
+This void was that of shipping and postage paid for with Bitcoins. This issue is a set
+back to the community in that in order for someone to ship a package or letter to another
+Bitcoin user they had to exchange for fiat and thus incur exchange fee's and various other
+banking fee's and long wait times. This is where BitPostage comes in.  We provide a service 
+that will turn this exchange of Bitcoins to fiat and make it a simple thirty minute wait.
+We accept Bitcoins as payment and in turn send you a USPS stamp straight to your email
+to print out and place on your package or letter. From there you can place it in your 
+mailbox and it will be sent like any other mail. This will make the lives of many people
+much simpler and we feel make the bitcoin network much stronger.</p>
+
+	<h2>Fees:</h2>
+<p>Our fee structure is very simple and is similar to that of the many 
+Bitcoin exchanges, the more you ship the lower your fee will be.  It starts at 20%
+for all new users and will go down each month as long as something is mailed during
+this month.  If you do not wish to register and participate in the fee schedule then
+you will stay at the 20% fee rate until you register.</p>
+<table class="table table-striped table-condensed">
+	<thead>
+		<th>Percent</th><th>Lower Limit</th><th>Upper Limit</th>
+	</thead>
+	<tr><td>20%</td><td>0</td><td>5</td></tr>
+	<tr><td>16%</td><td>6</td><td>15</td></tr>
+	<tr><td>12%</td><td>16</td><td>30</td></tr>
+	<tr><td>8%</td><td>30</td><td>50</td></tr>
+</table>
+	<h2>Policy</h2>
+<p>Because of the nature of this service we cannot except returns except for
+very special and extreme cases. We cannot take responsibility if you enter in the
+wrong weight, dimensions, or type of postage.  We are a as is entity.  We email 
+you your stamp and that is the end of the transaction.  We provide tracking as
+a curtiosity to our customers and will remove service to any user that we feel 
+is abusing.</p>
+	<h2>Security</h2>
+<p>To ensure the security of our customers our code base has to pass a very rigrous
+testing regime to ensure code quality and to prevent vulnerabilities from propping
+up. We also have to protect user data in accordance to USPS regulations and Endicia
+contract regulations. It is in our best interest to provide the best security for
+our customer's data as possible and we will strive to prevent and minimize our risk
+of data breach. But, in the event that there is a breach we will take the public site
+down and notify all customers about the breach along with a break down of the attack,
+or to the best of our knowledge.
+</p>
+<p>Because of our contracts with the USPS and Endicia we must store the following
+information about our customers:
+	<ul>
+		<li>First and Last name</li>
+		<li>Phone number</li>
+		<li>List of address that they sent post to and when this occured.</li>
+		<li>List of addresses that this customer sent from, ie the return address</li>
+	</ul>
+</p>
+<p>We cannot provide this service without this data retention. We need to keep this data
+in order to protect ourselves and out customers from fraud, crimes, or abuse of our 
+infrastructure and that of the USPS and Endicia. We must follow strict guidelines in
+handling of this data and will exceed the security recommendations that have been put
+forth in our contracts with the above listed entities.
+</p>
+	<h2>Contact</h2>
+<p>We will be availabe on the Freenode network in IRC for support and help, but we
+prefer email for support or inquiries:<br />
+info@bitpostage.net<br />
+support@bitpostage.net<br />
+During this startup phase we will be working out any kinks, so please email us about
+<b>any</b> issues that you may have while using our service.
+
+Thanks, BitPostage Team
+</div>
+{% end %}
+
