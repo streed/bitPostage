@@ -1,0 +1,52 @@
+﻿<LabelRequest Test="YES" LabelSize="4x6c" LabelType="International" LabelSubtype="Integrated" ImageFormat="ZPLII">
+  <IntegratedFormType>Form2976A</IntegratedFormType>
+  <RequesterID>abcd</RequesterID>
+  <AccountID>000000</AccountID>
+  <PassPhrase>SamplePassPhrase</PassPhrase>
+  <MailClass>PriorityMailInternational</MailClass>
+  <WeightOz>3</WeightOz>
+  <MailpieceShape>Parcel</MailpieceShape>
+  <Value>3.00</Value>
+  <PartnerCustomerID>12345ABCD</PartnerCustomerID>
+  <PartnerTransactionID>6789EFGH</PartnerTransactionID>
+  <FromName>Benjamin Franklin</FromName>
+  <ReturnAddress1>475 L'Enfant Plaza SW</ReturnAddress1>
+  <FromCity>Washington</FromCity>
+  <FromState>DC</FromState>
+  <FromPostalCode>20260</FromPostalCode>
+  <FromPhone>2022682000</FromPhone>
+  <ToName>ADDRESS MANAGEMENT</ToName>
+  <ToCompany>Canada Post</ToCompany>
+  <ToAddress1>2701 RIVERSIDE DRIVE</ToAddress1>
+  <ToAddress2>SUITE B-216</ToAddress2>
+  <ToCity>OTTAWA</ToCity>
+  <ToState>ON</ToState>
+  <ToPostalCode>K1A OB1</ToPostalCode>
+  <ToCountry>CANADA</ToCountry>
+  <ToCountryCode>CA</ToCountryCode>
+  <ToPhone>1 800 363 3459</ToPhone>
+  <CustomsInfo>
+    <ContentsType>Documents</ContentsType>
+    <ContentsExplanation></ContentsExplanation>
+    <CustomsItems>
+      <CustomsItem>
+        <Description>CustomsItem 1</Description>
+        <Quantity>1</Quantity>
+        <Weight>1</Weight>
+        <Value>1.00</Value>
+      </CustomsItem>
+      <CustomsItem>
+        <Description>CustomsItem 2</Description>
+        <Quantity>1</Quantity>
+        <Weight>1</Weight>
+        <Value>1.00</Value>
+      </CustomsItem>
+      <CustomsItem>
+        <Description>CustomsItem 3</Description>
+        <Quantity>1</Quantity>
+        <Weight>1</Weight>
+        <Value>1.00</Value>
+      </CustomsItem>
+    </CustomsItems>
+  </CustomsInfo>
+</LabelRequest>

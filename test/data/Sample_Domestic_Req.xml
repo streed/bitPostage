@@ -1,0 +1,61 @@
+<LabelRequest Test="YES" LabelType="Domestic" LabelSubtype="Integrated" LabelSize="4x6c" ImageFormat="ZPLII">
+  <MailpieceShape>Parcel</MailpieceShape>
+  <MailClass>Priority</MailClass>
+  <WeightOz>64</WeightOz>
+  <RequesterID>abcd</RequesterID>
+  <AccountID>123456</AccountID>
+  <PassPhrase>789101112</PassPhrase>
+  <AutomationRate>FALSE</AutomationRate>
+  <Machinable>TRUE</Machinable>
+  <IncludePostage>TRUE</IncludePostage>
+  <ReplyPostage>FALSE</ReplyPostage>
+  <ShowReturnAddress>TRUE</ShowReturnAddress>
+  <Stealth>False</Stealth>
+  <Services CertifiedMail="OFF" COD="OFF" DeliveryConfirmation="OFF" ElectronicReturnReceipt="OFF" InsuredMail="OFF" RegisteredMail="OFF" RestrictedDelivery="OFF" ReturnReceipt="OFF" SignatureConfirmation="OFF" HoldForPickup="OFF" MerchandiseReturnService="OFF" OpenAndDistribute="OFF" />
+  <IntegratedFormType>Form2976A</IntegratedFormType>
+  <CustomsFormImageFormat>PNG</CustomsFormImageFormat>
+  <ReferenceID>Label Service Test (Test)</ReferenceID>
+  <PartnerCustomerID>test</PartnerCustomerID>
+  <PartnerTransactionID>test</PartnerTransactionID>
+  <CustomsInfo>
+    <ContentsType>Documents</ContentsType>
+    <RestrictionType>None</RestrictionType>
+    <SendersCustomsReference>Senders Ref</SendersCustomsReference>
+    <ImportersCustomsReference>Importers Ref</ImportersCustomsReference>
+    <LicenseNumber>License 123</LicenseNumber>
+    <CertificateNumber>Cert No. 345</CertificateNumber>
+    <InvoiceNumber>Invoice 678</InvoiceNumber>
+    <EelPfc>NOEEI 30.37(a)</EelPfc>
+    <CustomsItems>
+      <CustomsItem>
+        <Description>Item 1</Description>
+        <Quantity>1</Quantity>
+        <Weight>1</Weight>
+        <Value>1</Value>
+        <CountryOfOrigin>US</CountryOfOrigin>
+      </CustomsItem>
+      <CustomsItem>
+        <Description>Item 2</Description>
+        <Quantity>2</Quantity>
+        <Weight>14</Weight>
+        <Value>1</Value>
+        <HSTariffNumber>123456</HSTariffNumber>
+        <CountryOfOrigin>IE</CountryOfOrigin>
+      </CustomsItem>
+    </CustomsItems>
+  </CustomsInfo>
+  <ResponseOptions PostagePrice="true" />
+  <FromCompany>Endicia</FromCompany>
+  <ReturnAddress1>385 Sherman Ave</ReturnAddress1>
+  <FromCity>Palo Alto</FromCity>
+  <FromState>CA</FromState>
+  <FromPostalCode>94306</FromPostalCode>
+  <FromPhone>6503212640</FromPhone>
+  <FromEMail>john.doe@email.com</FromEMail>
+  <ToName>G.I. Joe</ToName>
+  <ToAddress1>PSC 473 Box 2309</ToAddress1>
+  <ToCity>FPO</ToCity>
+  <ToState>AP</ToState>
+  <ToPostalCode>96349</ToPostalCode>
+  <ToPhone>6503212640</ToPhone>
+</LabelRequest>

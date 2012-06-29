@@ -1,0 +1,25 @@
+﻿<LabelRequest Test="YES" LabelType="DestinationConfirm" LabelSize="EnvelopeSize10" ImageFormat="PNG">
+  <RequesterID>abcd</RequesterID>
+  <AccountID>123456</AccountID>
+  <PassPhrase>samplePassPhrase</PassPhrase>
+  <MailClass>First</MailClass>
+  <WeightOz>1</WeightOz>
+  <MailpieceShape>Letter</MailpieceShape>
+  <Services DeliveryConfirmation="OFF" />
+  <PartnerCustomerID>12345ABCD</PartnerCustomerID>
+  <PartnerTransactionID>6789EFGH</PartnerTransactionID>
+  <ToName>Harry Whitehouse</ToName>
+  <ToCompany>Endicia</ToCompany>
+  <ToAddress1>385 Sherman St.</ToAddress1>
+  <ToCity>Palo Alto</ToCity>
+  <ToState>CA</ToState>
+  <ToPostalCode>94306</ToPostalCode>
+  <ToPhone>8005763279</ToPhone>
+  <FromName>Ben Franklin</FromName>
+  <ReturnAddress1>475 L'Enfant Plaza SW</ReturnAddress1>
+  <FromCity>Washington</FromCity>
+  <FromState>DC</FromState>
+  <FromPostalCode>20260</FromPostalCode>
+  <FromPhone>2022682000</FromPhone>
+  <RubberStamp1>TypicalRequest.xml</RubberStamp1>
+</LabelRequest>

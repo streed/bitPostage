@@ -1,3 +1,9 @@
 *.pyc
 .*.swp
 localenv/*
+.installed.cfg
+parts/*
+bin/buildout
+bin/mypython
+eggs/*
+downloads/*

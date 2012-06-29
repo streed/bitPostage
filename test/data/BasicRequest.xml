@@ -1,0 +1,18 @@
+﻿<LabelRequest>
+  <RequesterID>abcd</RequesterID>
+  <AccountID>123456</AccountID>
+  <PassPhrase>samplePassPhrase</PassPhrase>
+  <MailClass>Priority</MailClass>
+  <WeightOz>1</WeightOz>
+  <PartnerCustomerID>12345ABCD</PartnerCustomerID>
+  <PartnerTransactionID>6789EFGH</PartnerTransactionID>
+  <FromName>Benjamin Franklin</FromName>
+  <ReturnAddress1>475 L'Enfant Plaza SW</ReturnAddress1>
+  <FromCity>Washington</FromCity>
+  <FromState>DC</FromState>
+  <FromPostalCode>20260</FromPostalCode>
+  <ToAddress1>247 High St.</ToAddress1>
+  <ToCity>Palo Alto</ToCity>
+  <ToState>CA</ToState>
+  <ToPostalCode>94301</ToPostalCode>
+</LabelRequest>
