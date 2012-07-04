@@ -1,6 +1,6 @@
 import inject
-from ModuleConfig import ModuleConfig
-from BitPostageServer import BitPostageApplication
+from bitpostage.ModuleConfig import ModuleConfig
+from bitpostage.BitPostageServer import BitPostageApplication
 
 def main():
 	bitpostageApp = BitPostageApplication()

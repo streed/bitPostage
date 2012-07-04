@@ -1,0 +1,26 @@
+{% extends "theme.html" %}
+
+{% block title %} Login {% end %}
+
+{% block body %}
+<div class='span10'>
+<form class="form-horizontal span6 offset2">
+	<fieldset>
+		<legend>Login:</legend>
+		<div class="control-group">
+			<label class="control-label" for="username">Username:</label>
+			<div class="controls">
+				<input type="text" class="input" id="username">
+			</div>
+			<label class="control-label" for="password">Password:</label>
+			<div class="controls">
+				<input type="text" class="input" id="password">
+			</div>
+			<div class="controls">
+				<button class="btn btn-inverse" type="submit">Login</button><a href="/register">Register</a>
+			</div>
+		</div>
+	</fieldset>
+</form>
+</div>
+{% end %}
