@@ -1,6 +1,5 @@
 """
 	LabelRequest -- This makes the request to Endicia to do the actual grab of the label inforamtion.
-			TODO: Make this use a threadpool and object pool to insure that it does not block
 			the other requests.
 
 			This class will return a Hash of the xml which will be returned by the EndiciaXmlHelper
@@ -9,6 +8,7 @@ import inject
 import logging
 
 
+#TODO: Make this use a threadpool and object pool to insure that it does not block
 class LabelRequest:
 	@inject.param( "endiciaPartnerId", bindto="123456" )
 	@inject.param( "endiciaAccountId", bindto="123456" )
