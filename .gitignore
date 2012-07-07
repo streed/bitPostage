@@ -7,3 +7,4 @@ bin/buildout
 bin/mypython
 eggs/*
 downloads/*
+:w
