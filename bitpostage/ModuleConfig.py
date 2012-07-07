@@ -10,7 +10,7 @@ class ModuleConfig( object ):
 		#Server information
 		injector.bind( 'configPath', to='./config.json' )
 		injector.bind( 'listenPort', to=8080 )
-		injector.bind( 'listenAddress', to='192.168.255.102' )
+		injector.bind( 'listenAddress', to='192.168.1.5' )
 
 		#Endicia information
 		#injector.bind( "endiciaPartnerId", "123456" )

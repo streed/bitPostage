@@ -78,21 +78,8 @@ def test_LavelXmlBuilder_to_string():
 
 	ret = builder.to_xml()
 
-	assert ret.tag == "LabelRequest"
-	assert ret[0].tag == "Test"
-	assert ret[1].tag == "LabelType"
-	assert ret[2].tag == "LabelSubType"
-	assert ret[3].tag == "LabelSize"
-	assert ret[4].tag == "ImageFormat"
-	assert ret[5].tag == "ImageResolution"
-	assert ret[6].tag == "RequesterID"
-	assert ret[7].tag == "AccountID"
-	assert ret[8].tag == "PassPhrase"
-	assert ret[9].tag == "MailClass"
-	assert ret[10].tag == "DateAdvance"
-	assert ret[11].tag == "WeightOz"
-	assert ret[12].tag == "MailpieceShape"
-	assert ret[13].tag == "MailpieceDimensions"
+	
+	assert false
 
 def test_AddressXmlBuilder_exception_thrown_for_invalid_address_type():
 	"""If the _type is not in ["To", "From"] then it should throw a InvalidAddressTypeError when to_xml is called"""
