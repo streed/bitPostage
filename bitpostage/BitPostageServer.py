@@ -30,16 +30,17 @@ class BitPostageApplication( tornado.web.Application ):
 
 		logging.info( "Setting up BitPostage Server" )	
 		logging.info( "Listening on %s:%d", self.listenAddress, self.listenPort )
-		logging.info( "Reading config @ %s", self.configPath )
+		#logging.info( "Reading config @ %s", self.configPath )
 
-		self.config = None
-		try:
-			self.config = Config( self.configPath )
-		except:
-			logging.exception( "Could not load %s", self.configPath )
+		#self.config = None
+		#try:
+		#	self.config = Config( self.configPath )
+		#except:
+		#	logging.exception( "Could not load %s", self.configPath )
 
 		logging.info( "Creating the handlers" )
 
+		#TODO: Make this configurable from the config.json
 		settings = {
 			"static_path": os.path.join( os.path.dirname( __file__ ), "static" ),
 			"cookie_secret": base64.b64encode( uuid.uuid4().bytes + uuid.uuid4().bytes ),
