@@ -94,6 +94,65 @@ def test_LavelXmlBuilder_to_string():
 	assert ret[12].tag == "MailpieceShape"
 	assert ret[13].tag == "MailpieceDimensions"
 
+#TODO: Write out this length test
+def test_LabelXmlBuilder_test_should_notn_raise_exception_when_setup_from_correct_map():
+	"""This should not raise any exceptions because the information is valid"""
+	def mockToAddress():
+		ret = (
+			E.ToCompany( "fake" ),
+			E.ToAddress1( "1234 Fake St" ),
+			E.ToAddress2( "Apartment 1" ),
+			E.ToCity( "Faketilly" ),
+			E.ToState( "VA" ),
+			E.ToPostalCode( "12345" ),
+			E.ToZIP4( "1234" ),
+			E.ToPhone( "1234567890" ),
+			E.ToEMail( "fake@fake.com" )
+		)
+
+		return ret
+
+	def mockFromAddress():
+		ret = (
+			E.FromName( "Fakeson" ),
+			E.FromCompany( "Fake company" ),
+			E.ReturnAddress1( "12345 Fake ave." ),
+			E.ReturnAddress2( "Room 10" ),
+			E.FromCity( "Fakeville" ),
+			E.FromState( "VA" ),
+			E.FromPostalCode( "12345" ),
+			E.FromZIP4( "1234" ),
+			E.FromPhone( "1234567890" )
+		)
+
+		return ret
+
+	builder = LabelXmlBuilder()
+
+	builder.setTest()
+	builder.setLabelType( "Default" )
+	builder.setLabelSubType( "None" )
+	builder.setLabelSize( "4x6" )
+	builder.setImageFormat( "JPEG" )
+	builder.setImageResolution( "300" )
+	builder.setRequestID( "123456" )
+	builder.setAccountID( "123456" )
+	builder.setPassPhrase( "x" )
+	builder.setMailClass( "First" )
+	builder.setDateAdvance( 0 )
+	builder.setWeightOunces( 4.1 )
+	builder.setMailPieceShape( "Letter" )
+	builder.setDimensions( ( 10, 10, 0.5 ) )
+	builder.setToAddress( mockToAddress )
+	builder.setFromAddress( mockFromAddress )
+	builder.setShipDate( "10/7/2012" )
+
+	_map = builder.xml
+
+	assert_raises( Exception, builder.setByMap, _map )
+
+	
+
 def test_AddressXmlBuilder_exception_thrown_for_invalid_address_type():
 	"""If the _type is not in ["To", "From"] then it should throw a InvalidAddressTypeError when to_xml is called"""
 	builder = AddressXmlBuilder( _type="wrong" )

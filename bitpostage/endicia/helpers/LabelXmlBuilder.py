@@ -9,12 +9,103 @@ class InvalidLabelValueError( Exception ):
 	def __str__( self ):
 		return repr( "The value \"%s\" was not valid for this Label type" % ( self.value ) )
 
+class RequiredLabelValueError( Exception ):
+	def __init__( self, value ):
+		self.value = value
+
+	def __str__( self ):
+		return repr( "This label is missing a required label value for it's %s" % ( self.value ) )
+
+class RequiredBecauseLabelValueError( Exception ):
+	def __init__( self, value, reason ):
+		self.value = value
+		self.reason = reason
+	
+	def __str__( self ):
+		return repr( "The option %s is required because %s" % ( self.value, self.reason ) )
+
 class LabelXmlBuilder( EndiciaXmlBuilder ):
 
 	xml = {}
 	
 	def __init__( self ):
 		EndiciaXmlBuilder.__init__( self)	
+	
+	def setByMap( self, options ):
+		if "Test" in options:
+			self.setTest()
+
+		if "LabelType" in options:
+			self.setLabelType( options["LabelType"] )
+
+		if "LabelSubType" in options and ( options["LabelType"] in [ "Domestic", "International" ] ):
+			self.setLabelSubType( options["LabelSubType"] )
+		elif "LabelSubType" in options and ( not options["LabelType"] in [ "Domestic", "International" ] ):
+			self.setLabelSubType( options["LabelSubType"] )
+		else:
+			raise RequiredBecauseLabelValueError( "LabelSubType", "LabelType is either Domestic or International" )
+
+		if "LabelSize" in options:
+			self.setLabelSize( options["LabelSize"] )
+
+		if "ImageFormat" in options:
+			self.setImageFormat( options["ImageFormat"] )
+
+		if "ImageResolution" in options:
+			self.setImageResolution( options["ImageResolution"] )
+
+		if "RequesterID" in options:
+			self.setRequestID( options["RequesterID"] )
+		else:
+			raise RequiredLabelValueError( "RequesterID" )
+
+		if "AccountID" in options:
+			self.setAccountID( options["AccountID"] )
+		else:
+			raise RequiredLabelValueError( "AccountID" )
+
+		if "PassPhrase" in options:
+			self.setPassPhrase( options["PassPhrase"] )
+		else:
+			raise RequiredLabelValueError( "PassPhrase" )
+
+		if "MailClass" in options:
+			self.setMailClass( options["MailClass"] )
+
+		if "DateAdvance" in options:
+			self.setDateAdvance( options["DateAdvance"] )
+
+		if "WeightOz" in options:
+			self.setWeightOunces( options["WeightOz"] )
+		else:
+			raise RequiredLabelValueError( "WeightOz" )
+
+		if "MailpieceShape" in options:
+			self.setMailPieceShape( options["MailpieceShape"] )
+		else:
+			raise RequiredLabelValueError( "MailpieceShape" )
+
+		if "MailpieceDimensions" in options:
+			self.setDimensions( options["MailpieceDimensions"] )
+		else:
+			raise RequiredLabelValueError( "Dimensions" )
+
+		if "ShipDate" in options:
+			self.setShipDate( options["ShipDate"] )
+		else:
+			raise RequiredLabelValueError( "ShipDate" )
+
+		if "IncludePostage" in options:
+			self.setIncludePostage( options["IncludePostage"] )
+		
+		if "ToAddress" in options:
+			self.setToAddress( options["ToAddress"] )
+		
+		if "FromAddress" in options:
+			self.setFromAddress( options["FromAddress"] )
+		else:
+			raise RequiredLabelValueError( "FromAddress" )
+
 	
 	def setTest( self ):
 		self.xml['Test'] = "Yes"
@@ -98,10 +189,16 @@ class LabelXmlBuilder( EndiciaXmlBuilder ):
 		self.xml["IncludePostage"] = val
 
 	def setToAddress( self, toAddress ):
-		self.xml['ToAddress'] = toAddress()
+		if hasattr( toAddress, "__call__" ):
+			self.xml['ToAddress'] = toAddress()
+		else:
+			self.xml["ToAddress"] = toAddress
 
 	def setFromAddress( self, fromAddress ):
-		self.xml['FromAddress'] = fromAddress()
+		if hasattr( fromAddress, "__call__" ):
+			self.xml['FromAddress'] = fromAddress()
+		else:
+			self.xml["FromAddress"] = fromAddress
 
 	
 	def to_xml( self ):
