@@ -4,6 +4,8 @@ from bitpostage.endicia.helpers.AddressXmlBuilder import AddressXmlBuilder
 
 from bitpostage.endicia.helpers.LabelXmlBuilder import InvalidLabelValueError
 from bitpostage.endicia.helpers.AddressXmlBuilder import InvalidAddressTypeError
+from bitpostage.endicia.helpers.LabelXmlBuilder import RequiredBecauseLabelValueError
+from bitpostage.endicia.helpers.LabelXmlBuilder import RequiredLabelValueError
 from lxml import etree
 from lxml.builder import E
 
@@ -26,7 +28,7 @@ def test_LabelXmlBuilder_exception_setDateAdvance():
 	assert_raises( InvalidLabelValueError, builder.setDateAdvance, -1 )
 	assert_raises( InvalidLabelValueError, builder.setDateAdvance, 8 )
 
-def test_LavelXmlBuilder_to_string():
+def test_LavelXmlBuilder_to_xml():
 	"""The to_string() should return a valid XML request"""
 	def mockToAddress():
 		ret = (
@@ -149,9 +151,114 @@ def test_LabelXmlBuilder_test_should_notn_raise_exception_when_setup_from_correc
 
 	_map = builder.xml
 
-	assert_raises( Exception, builder.setByMap, _map )
+	def test_closure():
+		global _xml
+		try:
+			builder.setByMap( _map )
+			raise Exception( "Everything is fine" )
+		except:
+			raise InvalidLabelValueError( "" )
 
+	assert_raises( Exception, test_closure )
+
+def test_LabelXmlBuilder_test_shot_raise_the_required_exceptions_on_improper_values_or_missing_options():
+	"""This should raise certain exceptions at certain times to signify wrong parameters or missing options for the label xml"""
 	
+	def build_label():
+		def mockToAddress():
+			ret = (
+				E.ToCompany( "fake" ),
+				E.ToAddress1( "1234 Fake St" ),
+				E.ToAddress2( "Apartment 1" ),
+				E.ToCity( "Faketilly" ),
+				E.ToState( "VA" ),
+				E.ToPostalCode( "12345" ),
+				E.ToZIP4( "1234" ),
+				E.ToPhone( "1234567890" ),
+				E.ToEMail( "fake@fake.com" )
+			)
+	
+			return ret
+	
+		def mockFromAddress():
+			ret = (
+				E.FromName( "Fakeson" ),
+				E.FromCompany( "Fake company" ),
+				E.ReturnAddress1( "12345 Fake ave." ),
+				E.ReturnAddress2( "Room 10" ),
+				E.FromCity( "Fakeville" ),
+				E.FromState( "VA" ),
+				E.FromPostalCode( "12345" ),
+				E.FromZIP4( "1234" ),
+				E.FromPhone( "1234567890" )
+			)
+	
+			return ret
+	
+		builder = LabelXmlBuilder()
+
+		builder.setTest()
+		builder.setLabelType( "Default" )
+		builder.setLabelSubType( "None" )
+		builder.setLabelSize( "4x6" )
+		builder.setImageFormat( "JPEG" )
+		builder.setImageResolution( "300" )
+		builder.setRequestID( "123456" )
+		builder.setAccountID( "123456" )
+		builder.setPassPhrase( "x" )
+		builder.setMailClass( "First" )
+		builder.setDateAdvance( 0 )
+		builder.setWeightOunces( 4.1 )
+		builder.setMailPieceShape( "Letter" )
+		builder.setDimensions( ( 10, 10, 0.5 ) )
+		builder.setToAddress( mockToAddress )
+		builder.setFromAddress( mockFromAddress )
+		builder.setShipDate( "10/7/2012" )
+		
+		return builder.xml
+
+	builder = LabelXmlBuilder()
+	xml = build_label()
+
+	xml["LabelType"] = "Domestic"
+	del xml["LabelSubType"]
+	assert_raises( RequiredBecauseLabelValueError, builder.setByMap, xml )
+	
+	xml = build_label()
+	del xml["AccountID"]
+	assert_raises( RequiredLabelValueError, builder.setByMap, xml )
+
+	xml = build_label()
+	del xml["RequesterID"]
+	assert_raises( RequiredLabelValueError, builder.setByMap, xml )
+
+	xml = build_label()
+	del xml["PassPhrase"]
+	assert_raises( RequiredLabelValueError, builder.setByMap, xml )
+
+	xml = build_label()
+	del xml["WeightOz"]
+	assert_raises( RequiredLabelValueError, builder.setByMap, xml )
+	
+	xml = build_label()
+	del xml["MailpieceShape"]
+	assert_raises( RequiredLabelValueError, builder.setByMap, xml )
+
+	xml = build_label()
+	del xml["MailpieceDimensions"]
+	assert_raises( RequiredLabelValueError, builder.setByMap, xml )
+	
+	xml = build_label()
+	del xml["ShipDate"]
+	assert_raises( RequiredLabelValueError, builder.setByMap, xml )
+
+	xml = build_label()
+	del xml["ToAddress"]
+	assert_raises( RequiredLabelValueError, builder.setByMap, xml )
+
+	xml = build_label()
+	del xml["FromAddress"]
+	assert_raises( RequiredLabelValueError, builder.setByMap, xml )
 
 def test_AddressXmlBuilder_exception_thrown_for_invalid_address_type():
 	"""If the _type is not in ["To", "From"] then it should throw a InvalidAddressTypeError when to_xml is called"""

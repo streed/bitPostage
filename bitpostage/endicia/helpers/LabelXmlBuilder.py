@@ -100,6 +100,8 @@ class LabelXmlBuilder( EndiciaXmlBuilder ):
 		
 		if "ToAddress" in options:
 			self.setToAddress( options["ToAddress"] )
+		else:
+			raise RequiredLabelValueError( "ToAddress" )
 		
 		if "FromAddress" in options:
 			self.setFromAddress( options["FromAddress"] )
