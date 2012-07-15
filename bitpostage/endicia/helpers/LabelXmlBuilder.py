@@ -108,6 +108,16 @@ class LabelXmlBuilder( EndiciaXmlBuilder ):
 		else:
 			raise RequiredLabelValueError( "FromAddress" )
 
+		if "PartnerCustomerID" in options:
+			self.setPartnerCustomerID( options["PartnerCustomerID"] )
+		else:
+			raise RequiredLabelValueError( "PartnerCustomerID" )
+
+		if "PartnerTransactionID" in options:
+			self.setPartnerTransactionID( options["PartnerTransactionID"] )
+		else:
+			raise RequiredLabelValueError( "PartnerTransactionID" )
+
 	
 	def setTest( self ):
 		self.xml['Test'] = "Yes"
@@ -201,14 +211,19 @@ class LabelXmlBuilder( EndiciaXmlBuilder ):
 			self.xml['FromAddress'] = fromAddress()
 		else:
 			self.xml["FromAddress"] = fromAddress
+	
+	def setPartnerCustomerID( self, customerID ):
+		self.xml["PartnerCustomerID"] = customerID
 
+	def setPartnerTransactionID( self, transactionID ):
+		self.xml["PartnerTransactionID"] = transactionID
 	
 	def to_xml( self ):
 		self.xmlString = (
 			E.LabelRequest(
 				E.Test( self.xml["Test"] ),
-				E.LabelType( self.xml["LabelType"] ),
-				E.LabelSubType( self.xml["LabelSubType"] ),
+				#E.LabelType( self.xml["LabelType"] ),
+				#E.LabelSubType( self.xml["LabelSubType"] ),
 				E.LabelSize( self.xml["LabelSize"] ),
 				E.ImageFormat( self.xml["ImageFormat"] ),
 				E.ImageResolution( self.xml["ImageResolution"] ),
@@ -216,13 +231,19 @@ class LabelXmlBuilder( EndiciaXmlBuilder ):
 				E.AccountID( self.xml["AccountID"] ),
 				E.PassPhrase( self.xml["PassPhrase"] ),
 				E.MailClass( self.xml["MailClass"] ),
-				E.DateAdvance( str( self.xml["DateAdvance"] ) ),
 				E.WeightOz( str( self.xml["WeightOz"] ) ),
 				E.MailpieceShape( self.xml["MailpieceShape"] ),
+				E.PartnerCustomerID( self.xml["PartnerCustomerID"] ),
+				E.PartnerTransactionID( self.xml["PartnerTransactionID"] ),
 			)
 		)
 
-		self.xmlString.append( self.xml["MailpieceDimensions"] )
+		if "LabelType" in self.xml:
+			self.xmlString.append( E.LabelType( self.xml["LabelType"] ) )
+			self.xmlString.append( E.LabelSubType( self.xml["LabelSubType"] ) )
+
+		if not self.xml["MailpieceShape"] in [ "Card", "Letter", "Flat" ]:
+			self.xmlString.append( self.xml["MailpieceDimensions"] )
 
 		for e in self.xml["FromAddress"]:
 			self.xmlString.append( e )
@@ -230,3 +251,4 @@ class LabelXmlBuilder( EndiciaXmlBuilder ):
 			self.xmlString.append( e )
 
 		return self.xmlString
+

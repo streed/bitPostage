@@ -32,15 +32,15 @@ def test_LavelXmlBuilder_to_xml():
 	"""The to_string() should return a valid XML request"""
 	def mockToAddress():
 		ret = (
-			E.ToCompany( "fake" ),
+			#E.ToCompany( "fake" ),
 			E.ToAddress1( "1234 Fake St" ),
 			E.ToAddress2( "Apartment 1" ),
 			E.ToCity( "Faketilly" ),
 			E.ToState( "VA" ),
 			E.ToPostalCode( "12345" ),
-			E.ToZIP4( "1234" ),
-			E.ToPhone( "1234567890" ),
-			E.ToEMail( "fake@fake.com" )
+			#E.ToZIP4( "1234" ),
+			#E.ToPhone( "1234567890" ),
+			#E.ToEMail( "fake@fake.com" )
 		)
 
 		return ret
@@ -48,14 +48,14 @@ def test_LavelXmlBuilder_to_xml():
 	def mockFromAddress():
 		ret = (
 			E.FromName( "Fakeson" ),
-			E.FromCompany( "Fake company" ),
+			#E.FromCompany( "Fake company" ),
 			E.ReturnAddress1( "12345 Fake ave." ),
 			E.ReturnAddress2( "Room 10" ),
 			E.FromCity( "Fakeville" ),
 			E.FromState( "VA" ),
 			E.FromPostalCode( "12345" ),
-			E.FromZIP4( "1234" ),
-			E.FromPhone( "1234567890" )
+			#E.FromZIP4( "1234" ),
+			#E.FromPhone( "1234567890" )
 		)
 
 		return ret
@@ -73,28 +73,34 @@ def test_LavelXmlBuilder_to_xml():
 	builder.setMailClass( "First" )
 	builder.setDateAdvance( 0 )
 	builder.setWeightOunces( 4.1 )
-	builder.setMailPieceShape( "Letter" )
+	builder.setMailPieceShape( "Parcel" )
 	builder.setDimensions( ( 10, 10, 0.5 ) )
 	builder.setToAddress( mockToAddress )
 	builder.setFromAddress( mockFromAddress )
+	builder.setPartnerCustomerID( "123456" )
+	builder.setPartnerTransactionID( "123456" )
 
 	ret = builder.to_xml()
 
 	assert ret.tag == "LabelRequest"
 	assert ret[0].tag == "Test"
-	assert ret[1].tag == "LabelType"
-	assert ret[2].tag == "LabelSubType"
-	assert ret[3].tag == "LabelSize"
-	assert ret[4].tag == "ImageFormat"
-	assert ret[5].tag == "ImageResolution"
-	assert ret[6].tag == "RequesterID"
-	assert ret[7].tag == "AccountID"
-	assert ret[8].tag == "PassPhrase"
-	assert ret[9].tag == "MailClass"
-	assert ret[10].tag == "DateAdvance"
-	assert ret[11].tag == "WeightOz"
-	assert ret[12].tag == "MailpieceShape"
-	assert ret[13].tag == "MailpieceDimensions"
+	#assert ret[1].tag == "LabelType"
+	#assert ret[2].tag == "LabelSubType"
+	assert ret[1].tag == "LabelSize"
+	assert ret[2].tag == "ImageFormat"
+	assert ret[3].tag == "ImageResolution"
+	assert ret[4].tag == "RequesterID"
+	assert ret[5].tag == "AccountID"
+	assert ret[6].tag == "PassPhrase"
+	assert ret[7].tag == "MailClass"
+	#assert ret[10].tag == "DateAdvance"
+	assert ret[8].tag == "WeightOz"
+	assert ret[9].tag == "MailpieceShape"
+	assert ret[10].tag == "PartnerCustomerID"
+	assert ret[11].tag == "PartnerTransactionID"
+	assert ret[12].tag == "LabelType"
+	assert ret[13].tag == "LabelSubType"
+	assert ret[14].tag == "MailpieceDimensions"
 
 #TODO: Write out this length test
 def test_LabelXmlBuilder_test_should_notn_raise_exception_when_setup_from_correct_map():
@@ -107,9 +113,9 @@ def test_LabelXmlBuilder_test_should_notn_raise_exception_when_setup_from_correc
 			E.ToCity( "Faketilly" ),
 			E.ToState( "VA" ),
 			E.ToPostalCode( "12345" ),
-			E.ToZIP4( "1234" ),
-			E.ToPhone( "1234567890" ),
-			E.ToEMail( "fake@fake.com" )
+			#E.ToZIP4( "1234" ),
+			#E.ToPhone( "1234567890" ),
+			#E.ToEMail( "fake@fake.com" )
 		)
 
 		return ret
@@ -123,8 +129,8 @@ def test_LabelXmlBuilder_test_should_notn_raise_exception_when_setup_from_correc
 			E.FromCity( "Fakeville" ),
 			E.FromState( "VA" ),
 			E.FromPostalCode( "12345" ),
-			E.FromZIP4( "1234" ),
-			E.FromPhone( "1234567890" )
+			#E.FromZIP4( "1234" ),
+			#E.FromPhone( "1234567890" )
 		)
 
 		return ret
@@ -148,6 +154,8 @@ def test_LabelXmlBuilder_test_should_notn_raise_exception_when_setup_from_correc
 	builder.setToAddress( mockToAddress )
 	builder.setFromAddress( mockFromAddress )
 	builder.setShipDate( "10/7/2012" )
+	builder.setPartnerCustomerID( "123456" )
+	builder.setPartnerTransactionID( "123456" )
 
 	_map = builder.xml
 
@@ -173,9 +181,6 @@ def test_LabelXmlBuilder_test_shot_raise_the_required_exceptions_on_improper_val
 				E.ToCity( "Faketilly" ),
 				E.ToState( "VA" ),
 				E.ToPostalCode( "12345" ),
-				E.ToZIP4( "1234" ),
-				E.ToPhone( "1234567890" ),
-				E.ToEMail( "fake@fake.com" )
 			)
 	
 			return ret
@@ -189,8 +194,6 @@ def test_LabelXmlBuilder_test_shot_raise_the_required_exceptions_on_improper_val
 				E.FromCity( "Fakeville" ),
 				E.FromState( "VA" ),
 				E.FromPostalCode( "12345" ),
-				E.FromZIP4( "1234" ),
-				E.FromPhone( "1234567890" )
 			)
 	
 			return ret
@@ -214,6 +217,8 @@ def test_LabelXmlBuilder_test_shot_raise_the_required_exceptions_on_improper_val
 		builder.setToAddress( mockToAddress )
 		builder.setFromAddress( mockFromAddress )
 		builder.setShipDate( "10/7/2012" )
+		builder.setPartnerCustomerID( "123456" )
+		builder.setPartnerTransactionID( "123456" )
 		
 		return builder.xml
 
@@ -260,6 +265,14 @@ def test_LabelXmlBuilder_test_shot_raise_the_required_exceptions_on_improper_val
 	del xml["FromAddress"]
 	assert_raises( RequiredLabelValueError, builder.setByMap, xml )
 
+	xml = build_label()
+	del xml["PartnerCustomerID"]
+	assert_raises( RequiredLabelValueError, builder.setByMap, xml )
+
+	xml = build_label()
+	del xml["PartnerTransactionID"]
+	assert_raises( RequiredLabelValueError, builder.setByMap, xml )
+
 def test_AddressXmlBuilder_exception_thrown_for_invalid_address_type():
 	"""If the _type is not in ["To", "From"] then it should throw a InvalidAddressTypeError when to_xml is called"""
 	builder = AddressXmlBuilder( _type="wrong" )
@@ -277,7 +290,6 @@ def test_AddressXmlBuilder_produces_correct_xml():
 	addr.setCity( "Fakeville" )
 	addr.setState( "VA" )
 	addr.setPostalCode( "12345" )
-	addr.setZIP4( "1234" )
 	addr.setCountry( "US" )
 	addr.setPhone( "1234567890" )
 	addr.setEmail( "fake@fake.com" )
@@ -292,9 +304,8 @@ def test_AddressXmlBuilder_produces_correct_xml():
 	assert ret[4].tag == "ToCity"
 	assert ret[5].tag == "ToState"
 	assert ret[6].tag == "ToPostalCode"
-	assert ret[7].tag == "ToZIP4"
-	assert ret[8].tag == "ToPhone"
-	assert ret[9].tag == "ToEMail"
+	#assert ret[7].tag == "ToPhone"
+	#assert ret[8].tag == "ToEMail"
 
 	addr._type = "From"
 	ret = addr.to_xml()	
@@ -306,8 +317,7 @@ def test_AddressXmlBuilder_produces_correct_xml():
 	assert ret[4].tag == "FromCity"
 	assert ret[5].tag == "FromState"
 	assert ret[6].tag == "FromPostalCode"
-	assert ret[7].tag == "FromZIP4"
-	assert ret[8].tag == "FromCountry"
-	assert ret[9].tag == "FromPhone"
-	assert ret[10].tag == "FromEMail"
+	assert ret[7].tag == "FromCountry"
+	#assert ret[8].tag == "FromPhone"
+	#assert ret[9].tag == "FromEMail"
 

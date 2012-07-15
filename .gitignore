@@ -1,5 +1,6 @@
 *.pyc
 .*.swp
+.*.swo
 localenv/*
 .installed.cfg
 parts/*

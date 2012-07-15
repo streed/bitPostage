@@ -37,9 +37,6 @@ class AddressXmlBuilder( EndiciaXmlBuilder ):
 	def setPostalCode( self, postalCode ):
 		self.xml["PostalCode"] = postalCode
 
-	def setZIP4( self, zip4 ):
-		self.xml["ZIP4"] = zip4
-	
 	def setCountry( self, country ):
 		self.xml["Country"] = country
 
@@ -71,10 +68,10 @@ class AddressXmlBuilder( EndiciaXmlBuilder ):
 			E.ToAddress2( self.xml['Address2'] ),
 			E.ToCity( self.xml['City'] ),
 			E.ToState( self.xml['State'] ),
-			E.ToPostalCode( self.xml['PostalCode'] ),
-			E.ToZIP4( self.xml['ZIP4'] ),
-			E.ToPhone( self.xml['Phone'] ),
-			E.ToEMail( self.xml['EMail'] )
+			E.ToPostalCode( self.xml['PostalCode'] )
+			#E.ToZIP4( self.xml['ZIP4'] ),
+			#E.ToPhone( self.xml['Phone'] ),
+			#E.ToEMail( self.xml['EMail'] )
 		)
 
 		return self.xmlString
@@ -88,10 +85,10 @@ class AddressXmlBuilder( EndiciaXmlBuilder ):
 			E.FromCity( self.xml["City"] ),
 			E.FromState( self.xml["State"] ),
 			E.FromPostalCode( self.xml["PostalCode"] ),
-			E.FromZIP4( self.xml["ZIP4"] ),
+			#E.FromZIP4( self.xml["ZIP4"] ),
 			E.FromCountry( self.xml["Country"] ),
-			E.FromPhone( self.xml["Phone"] ),
-			E.FromEMail( self.xml["EMail"] )
+			#E.FromPhone( self.xml["Phone"] ),
+			#E.FromEMail( self.xml["EMail"] )
 		)
 
 		return self.xmlString
