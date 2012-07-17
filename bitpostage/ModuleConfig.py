@@ -28,9 +28,14 @@ class ModuleConfig( object ):
 		injector.bind( "endiciaPassPhrase", to="x" )
 		injector.bind( "endiciaBaseUrl", to="https://www.envmgr.com/LabelService/EwsLabelService.asmx" )
 
-		logging.info( "Injecting Database information" )
+		logging.info( "Injecting Database Information" )
 		#Database information
 		injector.bind( DefaultDatabaseConnection,  to=MongoDatabaseConnection )
 		injector.bind( "databaseAddress", to="127.0.0.1" )
 		injector.bind( "databasePort", to=27017 )
+
+		logging.info( "Injecting Email Information" )
+		#Email information
+		injector.bind( "gmailAccount", to="do-not-reply@bitpostage.net" )
+		injector.bind( "gmailPassword", to="this is another test password" )
 
