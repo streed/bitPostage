@@ -29,7 +29,7 @@ class LabelXmlBuilder( EndiciaXmlBuilder ):
 	xml = {}
 	
 	def __init__( self ):
-		EndiciaXmlBuilder.__init__( self)	
+		EndiciaXmlBuilder.__init__( self )	
 	
 	def setByMap( self, options ):
 		if "Test" in options:

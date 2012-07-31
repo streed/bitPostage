@@ -59,4 +59,3 @@ def test_LabelRequest_make_request():
 
 	request.get( builder )
 
-	assert False

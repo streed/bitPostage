@@ -43,21 +43,21 @@ class LabelRequest:
 		
 		requestString = self.buildRequest( label )	
 
-		print requestString
+		#print requestString
 
 		headers = { "Content-Type": "application/x-www-form-urlencoded" }
 
 		response, content = self.http.request( url, "POST", body=requestString, headers=headers )
 
-		print response
-		print content
+		#print response
+		#print content
 
 
 
 	def buildRequest( self, label ):
 		xmlString = etree.tostring( label.to_xml() )
 
-		print etree.tostring( label.to_xml(), pretty_print=True )
+		#print etree.tostring( label.to_xml(), pretty_print=True )
 
 		#return urlencode( { "labelRequestXML" : xmlString } )
 		return "labelRequestXML=%s" % (xmlString )
