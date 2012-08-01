@@ -1,6 +1,6 @@
 from EndiciaXmlBreaker import EndiciaXmlBreaker
 from lxml import etree
-import StringIO
+from StringIO import StringIO
 
 class LabelXmlBreaker( EndiciaXmlBreaker ):
 
