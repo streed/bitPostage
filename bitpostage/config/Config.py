@@ -17,3 +17,4 @@ if __name__ == "__main__":
 	
 	print cc['http']
 	print cc['bitcoind']
+	print cc["mongodb"]
