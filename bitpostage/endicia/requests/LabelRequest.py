@@ -13,7 +13,7 @@ from lxml import etree
 from urllib import urlencode
 
 #bitpostage stuff
-from bitpostage.endicia.helpers.LabelXmlBuilder import LabelXmlBuilder
+from bitpostage.endicia.builders.LabelXmlBuilder import LabelXmlBuilder
 
 #TODO: Make this use a object pool to insure that it does not block
 class LabelRequest:

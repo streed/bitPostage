@@ -1,5 +1,5 @@
 from bitpostage.endicia.requests.LabelRequest import LabelRequest
-from bitpostage.endicia.helpers.LabelXmlBuilder import LabelXmlBuilder
+from bitpostage.endicia.builders.LabelXmlBuilder import LabelXmlBuilder
 
 from lxml.builder import E
 
