@@ -14,8 +14,10 @@ from urllib import urlencode
 
 #bitpostage stuff
 from bitpostage.endicia.builders.LabelXmlBuilder import LabelXmlBuilder
+from bitpostage.endicia.breakers.LabelXmlBreaker import LabelXmlBreaker
 
-#TODO: Make this use a object pool to insure that it does not block
+#TODO: Make this use an object pool for LabelXmlBuilders
+#TODO: Make this use an object pool for LabelXmlBreakers
 class LabelRequest:
 	@inject.param( "endiciaPartnerId", bindto="123456" )
 	@inject.param( "endiciaAccountId", bindto="123456" )
@@ -34,6 +36,8 @@ class LabelRequest:
 
 		self.http = httplib2.Http()
 
+		self.breaker = LabelXmlBreaker()
+
 	def get( self, label ):
 		logging.info( "Sending Request to Label Server" )
 		
@@ -43,15 +47,15 @@ class LabelRequest:
 		
 		requestString = self.buildRequest( label )	
 
-		#print requestString
-
 		headers = { "Content-Type": "application/x-www-form-urlencoded" }
 
 		response, content = self.http.request( url, "POST", body=requestString, headers=headers )
 
-		#print response
-		#print content
+		logging.info( "Parsing hte response" )
 
+		self.breaker.setXmlString( content )
+
+		return self.breaker.to_map()
 
 
 	def buildRequest( self, label ):
