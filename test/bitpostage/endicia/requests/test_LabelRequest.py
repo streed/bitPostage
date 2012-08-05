@@ -1,6 +1,8 @@
 from bitpostage.endicia.requests.LabelRequest import LabelRequest
 from bitpostage.endicia.builders.LabelXmlBuilder import LabelXmlBuilder
 
+from bitpostage.util.DumpBinaryData import dumpToFile
+
 from lxml.builder import E
 
 def test_LabelRequest_make_request():
@@ -9,8 +11,8 @@ def test_LabelRequest_make_request():
 	def mockToAddress():
 		ret = (
 			#E.ToCompany( "fake" ),
-			E.ToName( "sean" ),
-			E.ToAddress1( "4411 galesbury ln" ),
+			E.ToName( "Sean Reed" ),
+			E.ToAddress1( "4411 Galesbury Ln" ),
 			E.ToAddress2( "" ),
 			E.ToCity( "chantilly" ),
 			E.ToState( "VA" ),
@@ -24,9 +26,9 @@ def test_LabelRequest_make_request():
 
 	def mockFromAddress():
 		ret = (
-			E.FromName( "david" ),
+			E.FromName( "David" ),
 			#E.FromCompany( "Fake company" ),
-			E.ReturnAddress1( "4419 galesbury ln" ),
+			E.ReturnAddress1( "4419 Galesbury Ln" ),
 			E.ReturnAddress2( "" ),
 			E.FromCity( "chantilly" ),
 			E.FromState( "VA" ),
@@ -36,6 +38,7 @@ def test_LabelRequest_make_request():
 		)
 
 		return ret
+
 	builder = LabelXmlBuilder()
 
 	builder.setTest()
@@ -57,5 +60,16 @@ def test_LabelRequest_make_request():
 	builder.setPartnerCustomerID( "123456" )
 	builder.setPartnerTransactionID( "123456" )
 
-	request.get( builder )
+	_map = request.get( builder )
 
+	dumpToFile( "test/data/test_images/test_domestic.jpg", _map["Base64LabelImage"] )
+
+	assert _map["Status"] == "0"
+	
+	builder.setLabelType( "Default" )
+
+	_map = request.get( builder )
+
+	dumpToFile( "test/data/test_images/test_default.jpg", _map["Base64LabelImage"] )
+
+	assert _map["Status"] == "0"

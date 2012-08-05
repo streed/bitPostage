@@ -1,22 +1,29 @@
 from EndiciaXmlBreaker import EndiciaXmlBreaker
+from EndiciaXmlBreaker import MissingValueXmlError
 from lxml import etree
-from StringIO import StringIO
 
 class LabelXmlBreaker( EndiciaXmlBreaker ):
 
 	def __init__( self ):
 		EndiciaXmlBreaker.__init__( self )
 
-	def setXmlString( self, xml ):
-		self.xml = StringIO( xml )
-
 	def to_map( self ):
-		self.map = {}
+		_map = {}
 
-		tree = etree.parse( self.xml )
+		tree = etree.fromstring( self.xml )
 
-		print( etree.tostring( tree.getroot(), pretty_print=True ) )
+		_map["Status"] = tree.findtext( "Status" )
+		_map["Base64LabelImage"] = tree.findtext( "Base64LabelImage" )
+		_map["PIC"] = tree.findtext( "PIC" )
+		_map["TrackingNumber"] = tree.findtext( "TrackingNumber" )
+		_map["FinalPostage"] = tree.findtext( "FinalPostage" )
+		_map["TransactionID"] = tree.findtext( "TransactionID" )
+		_map["TransactionDateTime"] = tree.findtext( "TransactionDateTime" )
+		_map["PostmarkDate"] = tree.findtext( "PostmarkDate" )
+		_map["PostageBalance"] = tree.findtext( "PostageBalance" )
+		_map["ErrorMessage"] = tree.findtext( "ErrorMessage" )
+		_map["FinalPostage"] = tree.findtext( "FinalPostage" )
 		
+		self.map = _map
 
-
-
+		return self.map

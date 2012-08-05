@@ -9,3 +9,4 @@ bin/mypython
 eggs/*
 downloads/*
 :w
+*.jpg
