@@ -42,7 +42,7 @@ class BuyPostageXmlBuilder( EndiciaXmlBuilder ):
 
 	def setRecreditAmount( self, amount ):
 		if amount in [ 10, 25, 50, 100, 250, 500, 1000, 2500, 5000, 7500, 10000, 20000 ]:
-			self.xml["RecreditAmount"] = amount
+			self.xml["RecreditAmount"] = str( amount )
 		else:
 			raise InvalidCreditAmountError( amount )
 

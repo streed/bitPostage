@@ -250,5 +250,8 @@ class LabelXmlBuilder( EndiciaXmlBuilder ):
 		for e in self.xml["ToAddress"]:
 			self.xmlString.append( e )
 
+		self.xmlString.append( E.RubberStamp1( "Bitcoin's postage store:" ) )
+		self.xmlString.append( E.RubberStamp2( "BitPostage.net" ) )
+
 		return self.xmlString
 
