@@ -3,6 +3,7 @@ from bitpostage.endicia.builders.ChangePassPhraseXmlBuilder import ChangePassPhr
 from bitpostage.endicia.builders.EndiciaXmlBuilder import ValueToLongError
 
 def test_ChangePassPhraseXmlBuilder_invalid_values():
+	"""ChangePassPhraseXmlBuilder should raise ValueToLongError when each value is pass a value longer than required"""
 	builder = ChangePassPhraseXmlBuilder()
 	
 	assert_raises( ValueToLongError, builder.setPartnerID, "123456789012345678901234567890123456789012345678901" )

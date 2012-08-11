@@ -4,6 +4,7 @@ from bitpostage.endicia.builders.BuyPostageXmlBuilder import BuyPostageXmlBuilde
 from bitpostage.util.DumpBinaryData import dumpToFile
 
 def test_RecreditRequest_make_request():
+	"""RecreditRequst should return a status of 0"""
 	request = RecreditRequest()
 
 	builder = BuyPostageXmlBuilder()
