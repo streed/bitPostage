@@ -5,7 +5,7 @@ from lxml.builder import E
 from lxml import etree
 
 def test_LabelXmlBreaker_should_return_a_proper_hash_for_a_request_response():
-	
+	"""LabelXmlBreaker should parse the returned xml properly"""	
 	def mock_response():
 		return etree.tostring( E.LabelRequestResponse(
 			E.Status( str( 0 ) ),

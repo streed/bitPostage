@@ -6,6 +6,7 @@ from bitpostage.util.DumpBinaryData import dumpToFile
 from lxml.builder import E
 
 def test_LabelRequest_make_request():
+	"""LabelRequest should return a successful request with a status == 0 and a proper label returned"""
 	request = LabelRequest()
 
 	def mockToAddress():

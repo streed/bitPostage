@@ -49,8 +49,6 @@ class AddressXmlBuilder( EndiciaXmlBuilder ):
 	def setCountryCode( self, countrycode ):
 		self.xml["CountryCode"] = countrycode
 
-	#TODO: The self.xmlString is completely different for both the To and From XML's.
-	#	This needs to be redone :/
 	def to_xml( self ):
 		if self._type == "To":
 			return self.to_xml_to()

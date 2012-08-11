@@ -8,6 +8,7 @@ from email.MIMEImage import MIMEImage
 from tornado.template import Template
 from tornado.template import Loader
 
+#TODO: Add in some kind of email address validation and an appropiate error for invalid email address
 class GmailEmailMsg:
 	@inject.param( "gmailAccount", bindto="fake@gmail.com" )
 	@inject.param( "gmailPassword", bindto="123456" )
@@ -43,17 +44,3 @@ class GmailEmailTemplate:
 	
 	def generate( self, template, args ):
 		return self.loader.load( template ).generate( **args )
-
-if __name__ == "__main__":
-	injector = inject.Injector()
-	injector.bind( "gmailAccount", to="do-not-reply@bitpostage.net" )
-	injector.bind( "gmailPassword", to="this is another test password" )
-
-	inject.register( injector )
-
-	gmail = GmailEmailMsg()
-	temp = GmailEmailTemplate()
-
-	gmail.sendMessage( "sean@bitpostage.net", "test message", temp.generate( "welcome_email.html", { "userName": "sean", "domain": "test.bitpostage.net", "userToken": "1234567890" } ) )
-
-	gmail.sendMessage( "sean@bitpostage.net", "completion email", temp.generate( "completion_email.html", { "userName": "sean", "domain": "bistpoage.net", } ) )

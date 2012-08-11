@@ -43,7 +43,7 @@ class ChangePassPhraseXmlBuilder( EndiciaXmlBuilder ):
 		self.xmlString = (
 			E.ChangePassPhraseRequest(
 				E.RequesterID( self.xml["RequesterID"] ),
-				E.RequesterID( self.xml["RequestID"] ),
+				E.RequestID( self.xml["RequestID"] ),
 				E.CertifiedIntermediary( 
 					E.AccountID( self.xml["AccountID"] ),
 					E.PassPhrase( self.xml["PassPhrase"] )

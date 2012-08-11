@@ -6,7 +6,7 @@ from lxml import etree
 
 
 def test_BuyPostageXmlBreaker_should_return_a_proper_hash_for_a_request_response():
-
+	"""BuyPostageXmlBreaker should properly parse the response xml"""
 	def mock_response():
 		return etree.tostring( 
 			E.RecreditRequestResponse(
