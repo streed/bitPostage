@@ -22,3 +22,26 @@ def test_ChangePassPhraseXmlBreaker_parses_correctly():
 	assert ret["Status"] == "0"
 	assert ret["RequesterID"] == "abcd"
 	assert ret["RequestID"] == "CPP123"
+
+def test_ChangePassPhraseXmlBreaker_should_return_the_error_message():
+	"""The ChangePassPhraseXmlBreaker should return the error message."""
+	def mock_response():
+		return etree.tostring( E.ChangePassPhraseRequestResponse(
+			E.Status( str( 1 ) ),
+			E.RequesterID( "abcd" ),
+			E.RequestID( "CPP123" ),
+			E.ErrorMessage( "Test Message" )
+		) )
+
+	breaker = ChangePassPhraseXmlBreaker()
+
+	breaker.setXmlString( mock_response() )
+
+	ret = breaker.to_map()
+
+	assert ret["Status"] == "1"
+	assert ret["ErrorMessage"] == "Test Message"
+	assert ret["RequesterID"] == "abcd"
+	assert ret["RequestID"] == "CPP123"
+
+
