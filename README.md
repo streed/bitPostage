@@ -2,12 +2,14 @@
 
 # Python Requirements:
 * Celery
-* Tornado
-* lxml
-* inject
-* nose
+* Tornado 2.3
+* lxml 2.3.4
+* Inject 1.0.1
+* nose 1.1.2
 * virtualenv
 * mock
+* coverage 3.5.2
+* httplib2 0.7.4
 
 # System Requirements:
 * MongoDB
