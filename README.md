@@ -6,8 +6,8 @@
 * lxml 2.3.4
 * Inject 1.0.1
 * nose 1.1.2
-* virtualenv
-* mock
+* virtualenv 1.7.2
+* mock 0.8.0
 * coverage 3.5.2
 * httplib2 0.7.4
 
