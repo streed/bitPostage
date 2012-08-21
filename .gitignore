@@ -10,3 +10,4 @@ eggs/*
 downloads/*
 :w
 *.jpg
+.coverage
