@@ -43,17 +43,20 @@ class BitPostageApplication( tornado.web.Application ):
 		#TODO: Make this configurable from the config.json
 		settings = {
 			"static_path": os.path.join( os.path.dirname( __file__ ), "static" ),
+			"template_path": os.path.join( os.path.dirname( __file__ ), "templates" ),
 			"cookie_secret": base64.b64encode( uuid.uuid4().bytes + uuid.uuid4().bytes ),
 			"login_url": "/login",
 			"debug": True
 		}
+
+		logging.info( "Looking for templates in: %s" % ( settings["template_path"] ) )
 
 		handlers = [ 
 			( r"/(\w*)", DefaultHandler ),
 			( r"/static/(.*)", tornado.web.StaticFileHandler, dict( path=settings['static_path'] ) ),
 		]
 
-		tornado.web.Application.__init__( self, handlers )
+		tornado.web.Application.__init__( self, handlers, **settings )
 
 		self.listen( self.listenPort )
 

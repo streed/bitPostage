@@ -4,3 +4,21 @@
 	margin: 3px;
 	color: #C00
 }
+
+@font-face {
+	font-family: logo_font;
+	src: url( '/static/fonts/logo2.ttf' );
+}
+
+.logo {
+	font-family: logo_font;
+}
+
+body {
+	padding-top: 60px;
+	padding-bottom: 40px;
+}
+
+.snapshots {
+	padding-top:20px;
+}

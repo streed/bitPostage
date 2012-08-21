@@ -1,0 +1,115 @@
+{% extends theme.html %}
+{% block body %}
+<form class="form-verticle" id="bitpostage-address-form" name="address-submission">
+	<div class="row">
+		<div class="span4">
+			<fieldset>
+				<legend>To:</legend>
+				<div class="control-group">
+					<label class="control-label" for="first_name">First Name:</label>
+					<div class="controls">
+						<input type="text" class="input" name="first_name" />
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="last_name">Last Name:</label>
+					<div class="controls">
+						<input type="text" class="input" name="last_name" />
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="address">Address:</label>
+					<div class="controls">
+						<input type="text" class="input" name="address1" />
+						<input type="text" class="input" name="address2" />
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="city2">City:</label>
+					<div class="controls">
+						<input type="text" class="input" name="city" />
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="state2">State:</label>
+					<div class="controls">
+						<input type="text" class="input" name="state" />
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="zip2">Zipcode:</label>
+					<div class="controls">
+						<input type="text" class="input" name="zip" />
+					</div>
+				</div>
+			</fieldset>
+		</div>
+		<div class="span4">
+			<fieldset>
+				<legend>From:</legend>
+                                       <div class="control-group">
+					<label class="control-label" for="first_name">First Name:</label>
+					<div class="controls">
+						<input type="text" class="input" name="first_name_2">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="last_name">Last Name:</label>
+					<div class="controls">
+						<input type="text" class="input" name="last_name_2">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="address1">Address:</label>
+					<div class="controls">
+						<input type="text" class="input" name="address1_2">
+						<input type="text" class="input" name="address2_2">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="city">City:</label>
+					<div class="controls">
+						<input type="text" class="input" name="city_2">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="state">State:</label>
+					<div class="controls">
+						<input type="text" class="input" name="state_2">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="zip">Zipcode:</label>
+					<div class="controls">
+						<input type="text" class="input" name="zip_2">
+					</div>
+				</div>
+			</fieldset>
+		</div>
+		<div class="span4">
+			<fieldset>
+				<legend>Details:</legend>
+				<label class="control-label" for="email">Email:</label>
+				<div class="controls">
+					<input type="text" class="input" name="email">
+				</div>
+				<button class="btn btn-success" type="submit">Get Postage</button>
+			</fieldset>
+			<div class='bitpostage-status'>
+				<fieldset>
+					<legend>Status:</legend>
+					<label class="control-label" for="progress-usps">Please enter in the To address.</label>
+					<div class="progress">
+						<div class="bar" style="width: 0%" id="progress-usps"></div>
+					</div>
+					<div id='mtgox-wrapper'>
+						<span class="mtgox" data-id="858f0b96-6cff-4353-ca77-3fe1ff8713b0" data-amount="0.25" data-currency="BTC">
+							<a href="https://payment.mtgox.com/858f0b96-6cff-4353-ca77-3fe1ff8713b0"><img src="https://payment.mtgox.com/img/mtgox-checkout.png" border="0" /></a>
+						</span>
+					</div>
+				</fieldset>
+			</div>
+		</div>
+	</div>
+</form>
+{% end %}
