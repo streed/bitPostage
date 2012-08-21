@@ -1,7 +1,7 @@
 ## BitPostage.net
 
 # Python Requirements:
-* Celery
+* Celery 3.0.6
 * Tornado 2.3
 * lxml 2.3.4
 * Inject 1.0.1
