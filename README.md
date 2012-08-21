@@ -1,6 +1,6 @@
-.h1 BitPostage.net
+## BitPostage.net
 
-Python Requirements:
+# Python Requirements:
 * Celery
 * Tornado
 * lxml
@@ -9,12 +9,12 @@ Python Requirements:
 * virtualenv
 * mock
 
-System Requirements:
+# System Requirements:
 * MongoDB
 * Lighttpd
 * Python 2.7.6
 
-Third Party Requirements:
+# Third Party Requirements:
 * Gmail Account
 * Endicia Account Information
 
