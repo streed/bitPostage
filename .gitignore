@@ -9,5 +9,5 @@ bin/mypython
 eggs/*
 downloads/*
 :w
-*.jpg
 .coverage
+test_*.jpg

@@ -22,3 +22,18 @@ body {
 .snapshots {
 	padding-top:20px;
 }
+
+.bitcoin_logo {
+	float: left;
+	width: 90px;
+	height: 90px;
+	background: url( "/static/img/BC_Logo_.png" ) no-repeat 0px 0px;
+}
+
+.printer_logo {
+	float: left;
+	width: 90px;
+	height: 77px;
+	background: url( "/static/img/printer.jpg" ) no-repeat 0px 0px;
+}
+
