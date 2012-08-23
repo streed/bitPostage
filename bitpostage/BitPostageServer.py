@@ -13,8 +13,11 @@ from database.default.DefaultDatabaseConnection import DefaultDatabaseConnection
 #Configuration
 from config.Config import Config
 
-#Handlers
-from handlers.DefaultHandler import DefaultHandler
+#Frontend Handlers
+from handlers.frontend.DefaultHandler import DefaultHandler
+
+#Api Handlers
+from handlers.api.LabelApiHandler import LabelApiHandler
 
 class BitPostageApplication( tornado.web.Application ):
 
@@ -54,6 +57,7 @@ class BitPostageApplication( tornado.web.Application ):
 		handlers = [ 
 			( r"/(\w*)", DefaultHandler ),
 			( r"/static/(.*)", tornado.web.StaticFileHandler, dict( path=settings['static_path'] ) ),
+			( r"/api/label/(\w*)", LabelApiHandler ),
 		]
 
 		tornado.web.Application.__init__( self, handlers, **settings )

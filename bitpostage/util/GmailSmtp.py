@@ -38,7 +38,7 @@ class GmailEmailMsg:
 
 class GmailEmailTemplate:
 	
-	@inject.param( "templateFolder", bindto="bitpostage/static/templates" )
+	@inject.param( "templateFolder", bindto="bitpostage/templates" )
 	def __init__( self, templateFolder ):
 		self.loader = Loader( templateFolder )
 	
