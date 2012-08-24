@@ -52,7 +52,5 @@ fs.readFile( template, function( err, data )
 			console.log( "[!] Could not write to: %s", err )
 			process.exit( 1 )
 		}
-
-
 	});
 });

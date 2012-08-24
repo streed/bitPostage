@@ -1,0 +1,3 @@
+define( "ControlPanel/ControlPanelModel", function()
+{
+});

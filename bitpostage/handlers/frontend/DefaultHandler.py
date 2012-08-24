@@ -13,3 +13,5 @@ class DefaultHandler( tornado.web.RequestHandler ):
 			self.render( "login.html" )
 		elif( uri == "register" ):
 			self.render( "register.html" )
+		elif( uri == "CP" ):
+			self.render( "control_panel.html" )

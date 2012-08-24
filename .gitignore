@@ -12,3 +12,4 @@ downloads/*
 .coverage
 test_*.jpg
 node_modules
+*_c.js
