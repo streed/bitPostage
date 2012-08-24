@@ -15,6 +15,8 @@
 * MongoDB
 * Lighttpd
 * Python 2.7.6
+* node 0.8.5
+ * dusta 0.3.0 (Look to update this with a newer/more current version)
 
 # Third Party Requirements:
 * Gmail Account
