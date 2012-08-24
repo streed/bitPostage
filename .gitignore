@@ -11,3 +11,4 @@ downloads/*
 :w
 .coverage
 test_*.jpg
+node_modules

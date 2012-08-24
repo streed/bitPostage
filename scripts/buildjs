@@ -1,0 +1,58 @@
+//Compile the file passed into the first arguement and output to the same folder but as <name>_c.js
+
+var args = process.argv
+
+if( args.length < 6 )
+{
+	console.log( "Useage: node buildjs -f <template> -n <name>" )
+	process.exit()
+}
+
+var template = ""
+var name = ""
+
+for( var i = 0; i < args.length; i++ )
+{
+	if( args[i] == "-f" )
+		template = args[i + 1]
+	else if( args[i] == "-n" )
+		name = args[i + 1]
+}
+
+var path = template.split( "/" )
+path.pop()
+path = path.join( "/" )
+
+if( path == "" )
+	path = "./"
+else
+	path += "/"
+
+console.log( "[*] Compiling `" + template + "` that will register as `" + name + "`" )
+
+var dust = require( "dust" )
+var fs = require( "fs" )
+
+fs.readFile( template, function( err, data )
+{
+	if( err )
+	{
+		console.error( "[!] Could not open file: %s", err );
+		process.exit( 1 )
+	}
+
+	data = data.toString( "ascii" )
+	template = dust.compile( data, name )
+	
+	console.log( "[*] Writing template to `" + path + name + "_c.js`" )
+	fs.writeFile( path + name + "_c.js", template, function( err )
+	{
+		if( err )
+		{
+			console.log( "[!] Could not write to: %s", err )
+			process.exit( 1 )
+		}
+
+
+	});
+});
