@@ -7,7 +7,6 @@ require( [ "jquery", "ControlPanel/ControlPanel_c", "ControlPanel/ControlPanelMo
 			var self = this;
 			dust.render( "ControlPanel", { username: "Testing" }, function( err, out )
 			{
-				console.log( out );
 				self.el.html( out );
 			});
 
