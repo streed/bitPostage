@@ -65,7 +65,7 @@ def test_LabelRequest_make_request():
 
 	dumpToFile( "test/data/test_images/test_domestic.jpg", _map["Base64LabelImage"] )
 
-	assert _map["Status"] == "0"
+	assert _map["Status"] == 0
 	
 	builder.setLabelType( "Default" )
 
@@ -73,4 +73,4 @@ def test_LabelRequest_make_request():
 
 	dumpToFile( "test/data/test_images/test_default.jpg", _map["Base64LabelImage"] )
 
-	assert _map["Status"] == "0"
+	assert _map["Status"] == 0

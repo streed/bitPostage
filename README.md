@@ -11,6 +11,7 @@
 * coverage 3.5.2
 * httplib2 0.7.4
 * pyMongo 2.3rc1
+* schema 0.1.1
 
 # System Requirements:
 * MongoDB

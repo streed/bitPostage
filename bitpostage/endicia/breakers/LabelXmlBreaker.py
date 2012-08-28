@@ -1,6 +1,7 @@
 from EndiciaXmlBreaker import EndiciaXmlBreaker
 from EndiciaXmlBreaker import MissingValueXmlError
 from lxml import etree
+from schema import Schema, And, Use, Optional
 
 class LabelXmlBreaker( EndiciaXmlBreaker ):
 
@@ -23,6 +24,24 @@ class LabelXmlBreaker( EndiciaXmlBreaker ):
 		_map["PostageBalance"] = tree.findtext( "PostageBalance" )
 		_map["ErrorMessage"] = tree.findtext( "ErrorMessage" )
 		_map["FinalPostage"] = tree.findtext( "FinalPostage" )
+
+		schema = Schema( 
+			{ 
+				"Status": And( Use( int ), lambda n: n >= 0 ), 
+				Optional( "ErrorMessage" ): Use( str ),
+				"Base64LabelImage": str,
+				"PIC": And( str, len ), 
+				"TrackingNumber": And( str, len ),
+				"FinalPostage": Use( float ),
+				"TransactionID": Use( int ),
+				"TransactionDateTime": Use( str ),
+				"PostmarkDate": Use( str ),
+				"PostageBalance": Use( float ),
+				}
+			)
+
+
+		_map = schema.validate( _map )
 		
 		self.map = _map
 

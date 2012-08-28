@@ -48,16 +48,16 @@ def test_LabelXmlBreaker_should_return_a_proper_hash_for_a_request_response():
 
 	ret = breaker.to_map()
 	
-	assert ret["Status"] == "0"
+	assert ret["Status"] == 0
 	assert ret["ErrorMessage"] == "None"
 	assert ret["Base64LabelImage"] == "This_is_fake"
 	assert ret["PIC"] == "123"
 	assert ret["TrackingNumber"] == "1234567890"
-	assert ret["FinalPostage"] == "5.0"
-	assert ret["TransactionID"] == "789"
+	assert ret["FinalPostage"] == 5.0
+	assert ret["TransactionID"] == 789
 	assert ret["TransactionDateTime"] == "20101220060019"
 	assert ret["PostmarkDate"] == "20080508"
-	assert ret["PostageBalance"] == "123.45"
+	assert ret["PostageBalance"] == 123.45
 	#assert ret["PostagePrice"] == "7.39"
 	#assert ret["Pricing"] == "CommercialBase"
 	#assert ret["IntraBMC"] == "FALSE"
