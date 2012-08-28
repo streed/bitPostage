@@ -17,4 +17,4 @@ def test_ChangePassPhraseRequest_returns_a_successful_request():
 
 	_map = request.get( builder )
 
-	assert _map["Status"] == "0"
+	assert _map["Status"] == 0

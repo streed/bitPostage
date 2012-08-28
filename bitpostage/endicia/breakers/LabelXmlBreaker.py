@@ -5,6 +5,21 @@ from schema import Schema, And, Use, Optional
 
 class LabelXmlBreaker( EndiciaXmlBreaker ):
 
+	schema = Schema( 
+		{ 
+			"Status": And( Use( int ), lambda n: n >= 0 ), 
+			Optional( "ErrorMessage" ): Use( str ),
+			"Base64LabelImage": str,
+			"PIC": And( str, len ), 
+			"TrackingNumber": And( str, len ),
+			"FinalPostage": Use( float ),
+			"TransactionID": Use( int ),
+			"TransactionDateTime": Use( str ),
+			"PostmarkDate": Use( str ),
+			"PostageBalance": Use( float ),
+			}
+		)
+
 	def __init__( self ):
 		EndiciaXmlBreaker.__init__( self )
 
@@ -25,23 +40,7 @@ class LabelXmlBreaker( EndiciaXmlBreaker ):
 		_map["ErrorMessage"] = tree.findtext( "ErrorMessage" )
 		_map["FinalPostage"] = tree.findtext( "FinalPostage" )
 
-		schema = Schema( 
-			{ 
-				"Status": And( Use( int ), lambda n: n >= 0 ), 
-				Optional( "ErrorMessage" ): Use( str ),
-				"Base64LabelImage": str,
-				"PIC": And( str, len ), 
-				"TrackingNumber": And( str, len ),
-				"FinalPostage": Use( float ),
-				"TransactionID": Use( int ),
-				"TransactionDateTime": Use( str ),
-				"PostmarkDate": Use( str ),
-				"PostageBalance": Use( float ),
-				}
-			)
-
-
-		_map = schema.validate( _map )
+		_map = self.schema.validate( _map )
 		
 		self.map = _map
 

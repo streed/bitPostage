@@ -19,7 +19,7 @@ def test_ChangePassPhraseXmlBreaker_parses_correctly():
 
 	ret = breaker.to_map()
 
-	assert ret["Status"] == "0"
+	assert ret["Status"] == 0
 	assert ret["RequesterID"] == "abcd"
 	assert ret["RequestID"] == "CPP123"
 
@@ -39,7 +39,7 @@ def test_ChangePassPhraseXmlBreaker_should_return_the_error_message():
 
 	ret = breaker.to_map()
 
-	assert ret["Status"] == "1"
+	assert ret["Status"] == 1
 	assert ret["ErrorMessage"] == "Test Message"
 	assert ret["RequesterID"] == "abcd"
 	assert ret["RequestID"] == "CPP123"

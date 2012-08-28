@@ -1,8 +1,20 @@
 from EndiciaXmlBreaker import EndiciaXmlBreaker
 from EndiciaXmlBreaker import MissingValueXmlError
 from lxml import etree
+from schema import Schema, And, Use, Optional
 
 class BuyPostageXmlBreaker( EndiciaXmlBreaker ):
+	
+	schema = Schema( { 
+		"Status": And( Use( int ), lambda n: n >= 0 ),
+		"RequesterID": And( Use( str ), lambda n: len( n ) <= 50 ),
+		"RequestID": And( Use( str ), lambda n: len( n ) <= 50 ),
+		"AccountID": And( Use( str ), lambda n: len( n ) <= 6 ),
+		"PostageBalance": And( Use( float ), lambda n: n >= 0.0 ),
+		"AscendingBalance": And( Use( float ), lambda n: n >= 0.0 ),
+		Optional( "ErrorMessage" ): str 
+		})
+
 
 	def __init__( self ):
 		EndiciaXmlBreaker.__init__( self )
@@ -38,6 +50,8 @@ class BuyPostageXmlBreaker( EndiciaXmlBreaker ):
 
 		if tree.find( "ErrorMessage" ) != None:
 			_map["ErrorMessage"] = tree.findtext( "ErrorMessage" )
+
+		_map = self.schema.validate( _map )
 
 		self.map = _map 
 

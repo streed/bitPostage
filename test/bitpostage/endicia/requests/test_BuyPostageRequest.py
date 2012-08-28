@@ -17,4 +17,4 @@ def test_RecreditRequest_make_request():
 
 	_map = request.get( builder )
 
-	assert _map["Status"] == "0"	
+	assert _map["Status"] == 0
